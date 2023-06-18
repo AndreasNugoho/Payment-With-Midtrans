@@ -8,11 +8,11 @@ var coreApi = new midtransClient.CoreApi({
 })
 class orderController { 
 
-    static getAllTranslations(req, res) { 
+    static async getAllTranslations(req, res) { 
         try {
-            const data = Order.findAll({})
-            res.status(200).json(data)
-            console.log('tes')
+            const data = await Order.findAll({})
+            res.status(200).json({data})
+            console.log(data)
         } catch (error) {
             res.status(error?.code || 500).json(error)
         }
